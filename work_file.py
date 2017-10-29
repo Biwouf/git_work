@@ -3,9 +3,9 @@
 
 #Script qui parse un petit fichier CSV
 
-import pandas as pd 
+import pandas as pand 
 
-races = pd.read_csv('triathlon.csv', sep=',')
+races = pand.read_csv('triathlon.csv', sep=',')
 names = races['Nom'].dropna().unique()
 
 #Afficher les distances uniquement XXL
