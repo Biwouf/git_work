@@ -15,13 +15,12 @@ long_races = races.Nom[races["Distance"] == "XXL"]
 
 
 #Fonction qui prend un fichier en paramètre
-def analyze(file_to_analyze, separator, to_display):
+def get_data(file_to_analyze, separator):
 	data = panda.read_csv(file_to_analyze, separator)
-	display = data[to_display].dropna().unique()
-	return display 
+	return data
 
 def main():
-	print(analyze('triathlon.csv', ",", "Nom"))
+	pass
 
 if __name__ == '__main__':
 	main()
