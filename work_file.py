@@ -18,7 +18,10 @@ long_races = races.Nom[races["Distance"] == "XXL"]
 def analyze(file_to_analyze, separator, to_display):
 	data = panda.read_csv(file_to_analyze, separator)
 	display = data[to_display].dropna().unique()
-	return display 
+	return display
+
+def search_for_equal(data, value_to_match):
+	pass
 
 def main():
 	print(analyze('triathlon.csv', ",", "Nom"))
