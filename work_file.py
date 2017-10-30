@@ -19,6 +19,9 @@ def get_data(file_to_analyze, separator):
 	data = panda.read_csv(file_to_analyze, separator)
 	return data
 
+def search_for_equal(data, value_to_match):
+	pass
+
 def main():
 	pass
 
