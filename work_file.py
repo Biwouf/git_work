@@ -19,11 +19,14 @@ def analyze(file_to_analyze, separator):
 	data = panda.read_csv(file_to_analyze, separator)
 	return data
 
-def search_for_equal(data, value_to_match):
-	pass
+def search_for_equal_distance(data, data_to_compare, value_to_match):
+	display = data.Nom[data[data_to_compare] == value_to_match]
+	print(display)
 
 def main():
-	print(analyze('triathlon.csv', ",", "Nom"))
+	search_for_equal_distance(analyze('triathlon.csv', ','),
+								'Distance',
+								'XXL')
 
 if __name__ == '__main__':
 	main()
