@@ -27,7 +27,6 @@ def main():
 	search_for_equal_distance(analyze('triathlon.csv', ','),
 								'Distance',
 								'XXL')
->>>>>>> fonction_test
 
 if __name__ == '__main__':
 	main()
