@@ -6,8 +6,9 @@
 import pandas as panda 
 
 races = panda.read_csv('triathlon.csv', sep=',')
-names = races['Nom'].dropna().unique()
+distances = races['Distance'].dropna().unique()
+print(distances)
 
 #Afficher les distances uniquement XXL
 long_races = races.Nom[races["Distance"] == "XXL"]
-print(long_races)
+#print(long_races)
