@@ -27,7 +27,7 @@ def search_for_equal_distance(data, data_to_compare, value_to_match):
 	display = data.Nom[data[data_to_compare] == value_to_match]
 	print(display)
 
-class distance():
+class Distance():
 	def __init__(self, name):
 		self.name = name
 
@@ -41,9 +41,14 @@ class distance():
 
 
 def main():
-	search_for_equal_distance(analyze('triathlon.csv', ','),
-								'Distance',
-								'XXL')
+	races = Distance('All races')
+	races.get_data('triathlon.csv')
+	races.split_by_distance()
+
+#def main():
+#	search_for_equal_distance(analyze('triathlon.csv', ','),
+#								'Distance',
+#								'XXL')
 
 
 if __name__ == '__main__':
