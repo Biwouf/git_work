@@ -3,11 +3,15 @@
 
 #Script qui parse un petit fichier CSV
 
-import pandas as panda 
+import numpy as np
+import pandas as panda
+import matplotlib as mpl 
+mpl.use('TkAgg')
+import matplotlib.pyplot as plt
 
 races = panda.read_csv('triathlon.csv', sep=',')
 distances = races['Distance'].dropna().unique()
-print(distances)
+#print(distances)
 
 #Afficher les distances uniquement XXL
 long_races = races.Nom[races["Distance"] == "XXL"]
@@ -23,10 +27,24 @@ def search_for_equal_distance(data, data_to_compare, value_to_match):
 	display = data.Nom[data[data_to_compare] == value_to_match]
 	print(display)
 
+class distance():
+	def __init__(self, name):
+		self.name = name
+
+	def get_data(self, file):
+		self.data = panda.read_csv(file, ",")
+
+	def split_by_distance(self):
+		data = self.data
+		distances = data['Distance'].dropna().unique()
+		print(distances)
+
+
 def main():
 	search_for_equal_distance(analyze('triathlon.csv', ','),
 								'Distance',
 								'XXL')
+
 
 if __name__ == '__main__':
 	main()
