@@ -36,8 +36,21 @@ class Distance():
 
 	def split_by_distance(self):
 		data = self.data
-		distances = data['Distance'].dropna().unique()
-		print(distances)
+
+		xs = data[data.Distance == "XS"]
+		s = data[data.Distance == "S"]
+		m = data[data.Distance == "M"]
+		l = data[data.Distance == "L"]
+		xl = data[data.Distance == "XL"]
+		xxl = data[data.Distance == "XXL"]
+
+		counts = [len(xs), len(s), len(m), len(l), len(xl), len(xxl)]
+		counts = np.array(counts)
+		races_total = counts.sum()
+		proportions = counts / races_total
+
+		print(races_total)
+		print(proportions)
 
 
 def main():
