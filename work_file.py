@@ -52,6 +52,8 @@ class Distance():
 		print(races_total)
 		print(proportions)
 
+		#TODO => Connecter les % avec les distances
+
 
 def main():
 	races = Distance('All races')
