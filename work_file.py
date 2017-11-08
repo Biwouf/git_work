@@ -46,18 +46,33 @@ class Distance():
 
 		counts = [len(xs), len(s), len(m), len(l), len(xl), len(xxl)]
 		counts = np.array(counts)
-		races_total = counts.sum()
+		races_total = counts.sum() 				#On fait la somme des nombres de la liste.
 		proportions = counts / races_total
 
-		print(races_total)
-		print(proportions)
+		#print(races_total)
+		#print(proportions)
+
+		labels = ["XS ({})".format(counts[0]),
+					"S ({})".format(counts[1]),
+					"M ({})".format(counts[2]),
+					"L ({})".format(counts[3]),
+					"XL ({})".format(counts[4]),
+					"XXL ({})".format(counts[5])]
 
 		#TODO => Connecter les % avec les distances
+		fig, ax = plt.subplots()
+		ax.pie(proportions,
+				labels=labels,
+				autopct='%1.1f p.')
+		plt.title("Répartition des triathlons par distance")
+		ax.axis('equal')
+		plt.show()
 
 
 def main():
 	races = Distance('All races')
 	races.get_data('triathlon.csv')
+	print(long_races)
 	races.split_by_distance()
 
 #def main():
