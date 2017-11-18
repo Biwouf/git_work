@@ -8,6 +8,9 @@ import pandas as panda
 import matplotlib as mpl 
 mpl.use('TkAgg')
 import matplotlib.pyplot as plt
+import logging as lg 
+
+lg.basicConfig(level=lg.DEBUG) 
 
 races = panda.read_csv('triathlon.csv', sep=',')
 distances = races['Distance'].dropna().unique()
@@ -30,6 +33,22 @@ def search_for_equal_distance(data, data_to_compare, value_to_match):
 class Distance():
 	def __init__(self, name):
 		self.name = name
+
+	def __len__(self):
+		return len(self.data)
+
+	def __iter__(self):
+		self.state = 0
+		return self
+
+	def __next__(self):
+		self.state += 1
+		if self.state > len(self):
+			raise StopIteration()
+		return self.data.iloc[self.state-1]
+
+	def __getitem__(self, index):
+		return self.dataframe.iloc[index]
 
 	def get_data(self, file):
 		self.data = panda.read_csv(file, ",")
@@ -72,8 +91,12 @@ class Distance():
 def main():
 	races = Distance('All races')
 	races.get_data('triathlon.csv')
-	print(long_races)
-	races.split_by_distance()
+	#print(long_races)
+	#print(len(races))
+
+	for race in races:
+		print(race['Nom'])
+	#races.split_by_distance()
 
 #def main():
 #	search_for_equal_distance(analyze('triathlon.csv', ','),
